@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.title {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  color: teal;
+}
+
+.item-field {
+  padding: 10px;
+  border: 1px solid rgb(232, 230, 230);
+  /* box-shadow: 0px 0px 40px -15px #444; */
+}
+
+.item-element {
+  padding: 5px;
+}
