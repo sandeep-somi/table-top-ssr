@@ -2,7 +2,7 @@
   "name": "data-entry",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sandeepsomi.github.io/write-print-export",
+  "homepage": "https://sandeepsomi.github.io/table-top",
   "dependencies": {
     "@material-ui/core": "^3.0.1",
     "@material-ui/icons": "^3.0.1",
