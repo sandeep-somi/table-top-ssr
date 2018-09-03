@@ -2,7 +2,7 @@
   "name": "table-top",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sandeepsomi.github.io/table-top",
+  "homepage": "https://sandeepsomi.github.io/table-top-ssr",
   "dependencies": {
     "@material-ui/core": "^3.0.1",
     "@material-ui/icons": "^3.0.1",
