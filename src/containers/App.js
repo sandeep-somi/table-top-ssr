@@ -64,17 +64,32 @@ class App extends Component {
     })
   }
 
-  onChange = (key, header) => {
+  onChange = (key, header, val) => {
+    console.log(key, val, 'onChange');
     let { data } = this.state;
-    let { headers } = data;
-    headers[key][header] = !headers[key][header]
-    this.setState({ data })
+    data['headers'][key][header] = val;
+    this.setState({ data });
+    this.updateDataSet(data)
+  }
+
+  updateDataSet = () => {
+
+    let { values = [] } = data;
+    let item = values[0]
+    let items = Object.keys(item);
+    let arr = items && items.map(item => ({ [item]: true }));
+    this.setState({
+      data: {
+        ...this.state.data,
+        headers: arr,
+        headersTxt: items.filter(a => !!a)
+      }
+    })
   }
 
   render() {
     const { data = [] } = this.state;
     const { headers = [], values = [], headersTxt = [] } = data;
-    console.log(values, 'values');
     console.log(data, 'data');
 
     return (
@@ -90,8 +105,7 @@ class App extends Component {
                 control={
                   <Checkbox
                     checked={headers[key][header]}
-                    onChange={this.onChange.bind(key, header)}
-                    value={headers[header]}
+                    onChange={(e) => this.onChange(key, header, e.target.checked)}
                   />
                 }
                 label={header}
@@ -112,12 +126,15 @@ class App extends Component {
                     <TableCell><FormButton>Hide</FormButton></TableCell>
                     <TableCell><FormButton>Hide</FormButton></TableCell>
                   </TableRow>
+                  <TableRow> 
+                    {headersTxt && headersTxt.map((value, key) => <TableCell key={key}>{value}</TableCell>)}
+                  </TableRow>
                 </TableHead>
                 <TableBody>
                   {
                     values && values.map((item, i) => <TableRow key={i}>
                       
-                      {headers && headers.map((value, key) => <TableCell key={key}>{item[Object.getOwnPropertyNames(value)]}</TableCell>)}
+                      {headersTxt && headersTxt.map((value, key) => <TableCell key={key}>{item[value]}</TableCell>)}
                     </TableRow>)
                   }
                 </TableBody>
